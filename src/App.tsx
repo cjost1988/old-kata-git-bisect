@@ -33,8 +33,8 @@ function App() {
             <div className="product-list">
                 {products
                     .filter((product: Product) => (new RegExp(search, 'i')).test(product.title))
-                    .map((product: Product) => [
-                        <div key={'id' + product.id}>#{product.id}</div>,
+                    .map((product: Product, index: number) => [
+                        <div key={'id' + product.id}>#{index+1}</div>,
                         <div key={'title' + product.id}><b>{product.title}</b></div>,
                         <div key={'price' + product.id} className="product-list-item-price">
                             {/*<FormattedNumber value={product.price} style="currency" currency="USD"/>*/}
