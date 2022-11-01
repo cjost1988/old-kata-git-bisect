@@ -37,7 +37,7 @@ function App() {
                         <div key={'id' + product.id}>#{product.id}</div>,
                         <div key={'title' + product.id}>{product.title}</div>,
                         <div key={'price' + product.id} className="product-list-item-price">
-                            <FormattedNumber value={product.price} style="currency" currency="EUR"/>
+                            <FormattedNumber value={product.price} style="currency" currency="USD"/>
                         </div>,
                     ])
                 }
