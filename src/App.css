@@ -1,0 +1,10 @@
+.product-list {
+    width: 400px;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.product-list-item-price {
+    text-align: right;
+}

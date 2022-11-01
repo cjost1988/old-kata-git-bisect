@@ -27,11 +27,13 @@ const products: Array<Product> = [
 function App() {
   return (
     <div className="App">
-        <ul>
-            {products.map((product: Product) => <li>
-                {product.title}
-            </li>)}
-        </ul>
+        <div className="product-list">
+            {products.map((product: Product) => [
+                <div>#{product.id}</div>,
+                <div>{product.title}</div>,
+                <div className="product-list-item-price">{product.price}</div>,
+            ])}
+        </div>
     </div>
   );
 }
