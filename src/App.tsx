@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import './App.css';
 import {FormattedNumber} from "react-intl";
 
@@ -26,19 +26,24 @@ const products: Array<Product> = [
 ];
 
 function App() {
-  return (
-    <div className="App">
-        <div className="product-list">
-            {products.map((product: Product) => [
-                <div key={'id' + product.id}>#{product.id}</div>,
-                <div key={'title' + product.id}>{product.title}</div>,
-                <div key={'price' + product.id} className="product-list-item-price">
-                    <FormattedNumber value={product.price} style="currency" currency="EUR"/>
-                </div>,
-            ])}
+    const [search, setSearch] = useState('');
+    return (
+        <div className="App">
+            <b>Search:</b> <input type="text" onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}/>
+            <div className="product-list">
+                {products
+                    .filter((product: Product) => (new RegExp(search, 'i')).test(product.title))
+                    .map((product: Product) => [
+                        <div key={'id' + product.id}>#{product.id}</div>,
+                        <div key={'title' + product.id}>{product.title}</div>,
+                        <div key={'price' + product.id} className="product-list-item-price">
+                            <FormattedNumber value={product.price} style="currency" currency="EUR"/>
+                        </div>,
+                    ])
+                }
+            </div>
         </div>
-    </div>
-  );
+    );
 }
 
 export default App;
