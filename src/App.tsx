@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import {FormattedNumber} from "react-intl";
 
 const products: Array<Product> = [
     {
@@ -29,9 +30,11 @@ function App() {
     <div className="App">
         <div className="product-list">
             {products.map((product: Product) => [
-                <div>#{product.id}</div>,
-                <div>{product.title}</div>,
-                <div className="product-list-item-price">{product.price}</div>,
+                <div key={'id' + product.id}>#{product.id}</div>,
+                <div key={'title' + product.id}>{product.title}</div>,
+                <div key={'price' + product.id} className="product-list-item-price">
+                    <FormattedNumber value={product.price} style="currency" currency="EUR"/>
+                </div>,
             ])}
         </div>
     </div>
